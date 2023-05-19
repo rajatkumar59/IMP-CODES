@@ -1,0 +1,33 @@
+//works with sorted arrays
+#include<bits/stdc++.h>
+using namespace std;
+ 
+void common(int a[],int b[],int c[],int m,int n,int o){
+    int i,j,k;
+    i=j=k=0;
+    set<int>st;
+    // vector<int>ans;
+    while(i<m&&j<n&&k<o){
+        if(a[i]==b[j]&&b[j]==c[k]){
+            st.insert(a[i]);
+            i++,j++,k++;
+        }else if(a[i]<b[j]){
+            i++;
+        }else if(b[j]<c[k]){
+            j++;
+        }else{
+            k++;
+        }
+    }
+    for(auto it:st){
+        cout<<it<<" ";
+    }
+}
+
+int main(){
+    int a[]={2,3,5,7,8};
+    int b[]={3,5,6,7,8,9,40};
+    int c[]={2,3,6,7,8};
+    common(a,b,c,5,6,5);
+    return 0;
+}
