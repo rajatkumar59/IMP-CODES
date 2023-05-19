@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+vector<int> power(int a,int b){
+    vector<int>ans;
+    ans.push_back(1);
+    int carry =0;
+    for(int i=1;i<=b;i++){
+       for(int j=0;j<ans.size();j++){
+          int x=ans[j]*i+carry;
+          ans[j]=x%10;
+          carry=x/10;
+       }while(carry){
+        ans.push_back(carry%10);
+        carry/=10;
+       }
+    }reverse(ans.begin(),ans.end());
+    return ans;
+}
+
+int main(){
+    int a;
+    cin>>a;
+    int b;
+    cin>>b;
+   
+   vector<int>p= power(a,b);
+   for(auto it:p){
+    cout<<it;
+   }
+    return 0;
+}
